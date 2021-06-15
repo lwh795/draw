@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media only screen and (min-width: 320px){
+            html {
+                font-size: 62.5% !important;
+            }
+        }
+        @media only screen and (min-width: 640px){
+            html {
+                font-size: 125% !important;
+            }
+        }
+        @media only screen and (min-width: 750px){
+            html {
+                font-size: 150% !important;
+            }
+        }
+        @media only screen and (min-width: 1242px){
+            html {
+                font-size: 187.5% !important;
+            }
+        }
+        h1{
+            width: 100%;
+            height: 10rem;
+            text-align: center;
+        }
+        .body{
+            width: 100%;
+            margin: 0 auto;
+        }
+        .btn{
+            width: 20rem;
+            height: 3.6rem;
+            line-height: 3.6rem;
+            margin: 0 auto;
+            background-color: #02ce89;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            text-align: center;
+            color: #7329d6;
+            margin-bottom: 4rem;
+        }
+        .title{
+            font-size: 18px;
+            color: #000;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .draw{
+            width: 9.8rem;
+            margin: 0 auto;
+            line-height: 2rem;
+            margin-bottom: 2rem;
+        }
+        .tip{
+            line-height: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .detail{
+            line-height: 2rem;
+            text-align: center;
+            max-width: 25rem;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="body">
+        <h1>抽签Demo</h1>
+        <div class="btn" @click="random">{{isshow?'重新一签':'抽一签'}}</div>
+        <div class="content">
+            <div class="title" v-show="isshow">签诗</div>
+            <div class="draw">{{info.draw}}</div>
+            <div class="title" v-show="isshow">诗意</div>
+            <div class="tip">{{info.tip}}</div>
+            <div class="title" v-show="isshow">整体释译</div>
+            <div class="detail">{{info.detail}}</div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="index.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data(){
+                return {
+                    isshow: false,
+                    info:{
+                        draw:'',
+                        tip:'',
+                        detail:''
+                    }
+                }
+            },
+            mounted(){
+            },
+            methods:{
+                random(){
+                    let ran = Math.floor(Math.random() * 50);
+                    this.info = allList[ran];
+                    this.isshow = true;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
